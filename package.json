@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server",
+    "test:unit": "jest",
+    "coverage": "npm run test:unit -- --coverage",
+    "test:e2e": "codeceptjs run --steps",
+    "test": "npm run coverage && start-server-and-test start http://localhost:8080 test:e2e",
+    "lint": "eslint --ext js,jsx ."
   },
   "repository": {
     "type": "git",
@@ -44,6 +49,9 @@
   },
   "dependencies": {
     "@codeceptjs/configure": "^0.5.2",
+    "@emotion/core": "^10.0.28",
+    "@emotion/styled": "^10.0.27",
+    "@reduxjs/toolkit": "^1.4.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
